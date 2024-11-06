@@ -1,5 +1,5 @@
 import SubscribeRectList from '@/components/SubscribeRectList';
 
-export default function TabTwoScreen() {
+export default function TabThreeScreen() {
   return <SubscribeRectList />;
 }
