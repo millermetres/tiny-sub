@@ -1,35 +1,28 @@
-import React, { useEffect } from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { SubscriptionContext } from '@/context/SubscriptionContext';
+import { Text, StyleSheet, View } from 'react-native';
 
-const SubscibeRect = ({
-  indexNumber,
-  isSubscribed,
-}: {
-  indexNumber: number;
-  isSubscribed: boolean;
-}) => {
-  useEffect(() => {
-    let interval;
+const SubscibeRect = ({ indexNumber }: { indexNumber: number }) => {
+  // pass data from some central place instead
+  // const { subscriptions } = useContext(SubscriptionContext);
 
-    if (isSubscribed) {
-      console.log(`${indexNumber} is subscribed`);
-      interval = setInterval(() => {
-        console.log(`${indexNumber} is still subscribed`);
-      }, 2000);
-    }
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isSubscribed, indexNumber]);
+  // useEffect(() => {
+  //   const isSubscribed = !!subscriptions[indexNumber];
+  //   if (isSubscribed) {
+  //     console.log(`${indexNumber} is subscribed`);
+  //     interval = setInterval(() => {
+  //       console.log(`${indexNumber} is still subscribed`);
+  //     }, 2000);
+  //   }
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [subscriptions, indexNumber]);
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => console.log('hello')}
-    >
+    <View style={styles.container}>
       <Text>rectangle: {indexNumber}</Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -40,6 +33,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     marginTop: 5,
     padding: 8,
+    height: 100,
   },
 });
 
